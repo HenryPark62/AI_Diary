@@ -1,0 +1,38 @@
+spring:
+  jpa:
+    show_sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql:/aws-0-ap-northeast-2.pooler.supabase.com:6543/postgres?prepareThreshold=0
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 2
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: planit745@gmail.com
+    password: ${SPRING_MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            enable: false
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+jwt:
+  secret: ${JWT_SECRET}
