@@ -42,7 +42,7 @@ public class EmailVerification {
     private User user;
 
     @Column(nullable = false)
-    private String verificationCode;
+    private int verificationCode;
 
     @Column(nullable = false, length = 10)
     private boolean isEmailVerified;
