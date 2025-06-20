@@ -15,7 +15,7 @@ public interface EmailVerificationRepository extends JpaRepository<EmailVerifica
     Optional<EmailVerification> findTopByTemporaryUserId_EmailOrderByCreateTimeDesc(String email);
 
     // 인증이 완료되지 않은 최신 인증 기록 조회
-    Optional<EmailVerification> findTopByTemporaryUserIdAndVerifiedEmailFalseOrderByCreateTimeDesc(
+    Optional<EmailVerification> findTopByTemporaryUserIdAndIsEmailVerifiedFalseOrderByCreateTimeDesc(
             TemporaryUser temporaryUser);
 
     // TemporaryUser의 id로 삭제 (내부 TemporaryUser 엔티티의 id 속성은 temporaryUserId)

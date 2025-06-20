@@ -16,8 +16,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.util.Platform;
-import com.trip.planit.User.config.exception.BadRequestException;
-import com.trip.planit.User.config.exception.CustomS3Exception;
+//import com.trip.planit.User.config.exception.BadRequestException;
+//import com.trip.planit.User.config.exception.CustomS3Exception;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -183,7 +183,7 @@ public class UserService {
         // 닉네임 중복 체크
         String nickname = tempUser.getNickname();
         if (userRepository.existsByNickname(nickname)) {
-            throw new BadRequestException("이미 사용 중인 닉네임입니다!");
+            throw new IllegalArgumentException("이미 사용 중인 닉네임입니다!");//new BadRequestException("이미 사용 중인 닉네임입니다!");
         }
 
         // email_verification 테이블에서 해당 임시 사용자와 관련된 모든 레코드를 먼저 삭제
@@ -278,19 +278,19 @@ public class UserService {
             String email = ((UserDetails) authentication.getPrincipal()).getUsername(); // 현재 로그인한 사용자의 이메일 가져오기
             return getUserByEmail(email).getUserId(); // 이메일로 User 조회 후 user_id 반환
         }
-        throw new BadRequestException("User is not authenticated.");
+        throw new IllegalArgumentException("User is not authenticated.");//new BadRequestException("User is not authenticated.");
     }
 
     @Transactional
     public void updateFcmToken(Long userId, String fcmToken) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new BadRequestException("User not found"));
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));//new BadRequestException("User not found"));
         user.setFcmToken(fcmToken);
     }
 
     public User getUserById(Long userId) {
         return userRepository.findById(userId)
-                .orElseThrow(() -> new BadRequestException("User not found with id: " + userId));
+                .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + userId));//new BadRequestException("User not found with id: " + userId));
     }
 
 }

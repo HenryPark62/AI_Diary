@@ -6,7 +6,7 @@ import backend.User.entity.User;
 import backend.User.repository.EmailVerificationRepository;
 import backend.User.repository.TemporaryUserRepository;
 import backend.User.repository.UserRepository;
-import com.trip.planit.User.config.exception.BadRequestException;
+//import com.trip.planit.User.config.exception.BadRequestException;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.transaction.Transactional;
@@ -76,8 +76,8 @@ public class EmailService {
         TemporaryUser tempUser = findTemporaryUserOrThrow(email);
 
         EmailVerification verification = emailVerificationRepository
-                .findTopByTemporaryUserIdAndVerifiedEmailFalseOrderByCreateTimeDesc(tempUser)
-                .orElseThrow(() -> new BadRequestException("인증 정보를 찾을 수 없습니다."));
+                .findTopByTemporaryUserIdAndIsEmailVerifiedFalseOrderByCreateTimeDesc(tempUser)
+                .orElseThrow(() -> new IllegalArgumentException("인증 정보를 찾을 수 없습니다."));//new BadRequestException("인증 정보를 찾을 수 없습니다."));
 
         validateCodeNotExpired(verification.getExpirationTime());
 
@@ -93,7 +93,7 @@ public class EmailService {
     @Transactional
     public boolean verifyUserEmailCode(String email, int code) {
         EmailVerification verification = emailVerificationRepository.findByUser_Email(email)
-                .orElseThrow(() -> new BadRequestException("이메일 검증 정보를 찾을 수 없습니다: " + email));
+                .orElseThrow(() -> new IllegalArgumentException("이메일 검증 정보를 찾을 수 없습니다: "));//new BadRequestException("이메일 검증 정보를 찾을 수 없습니다: " + email));
 
         validateCodeNotExpired(verification.getExpirationTime());
 
@@ -111,7 +111,7 @@ public class EmailService {
 
     public void checkFailedAttempts(int failedAttempts) {
         if (failedAttempts >= MAX_ATTEMPTS) {
-            throw new BadRequestException("최대 시도 횟수를 초과했습니다. 새로운 인증 코드를 요청해주세요.");
+            //throw new BadRequestException("최대 시도 횟수를 초과했습니다. 새로운 인증 코드를 요청해주세요.");
         }
     }
 
