@@ -9,7 +9,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="app">
+        <div className="app app-bg">
           <Header />
           <main>
             <Routes>
