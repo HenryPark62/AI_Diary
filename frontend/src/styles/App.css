@@ -164,7 +164,7 @@ main {
 }
 
 .app-bg {
-  background-image: url('src/assets/img/back.jpg');
+  background-image: url('/public/back.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
