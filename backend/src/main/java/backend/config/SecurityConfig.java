@@ -1,5 +1,6 @@
 package backend.config;
 
+import backend.User.security.OAuth2LoginSuccessHandler;
 import backend.User.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final CustomOAuth2UserService oAuth2UserService;
+    private final OAuth2LoginSuccessHandler successHandler;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -25,11 +27,10 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth -> oauth
-                        .userInfoEndpoint(userInfo -> userInfo
-                                .userService(oAuth2UserService)
-                        )
-                        .defaultSuccessUrl("/api/auth/oauth2/success", true)
+                        .userInfoEndpoint(userInfo -> userInfo.userService(oAuth2UserService))
+                        .successHandler(successHandler)  // ✅ 이 부분이 핵심
                 );
+
 
         return http.build();
     }
