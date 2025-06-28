@@ -1,4 +1,4 @@
-import './MyPage.css';
+import '../styles/MyPage.css';
 import {
   Smile,
   BookOpen,
