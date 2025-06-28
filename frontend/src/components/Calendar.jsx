@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { formatDate } from '../utils/dateUtils';
 import MonthSelector from './MonthSelector';
 import '../styles/Calendar.css';
+import { HappyCat, SadCat, AngryCat, NeutralCat } from './EmotionCatIcons';
 
 const Calendar = ({ selectedDate, onDateSelect, entries }) => {
   const [currentMonth, setCurrentMonth] = useState(selectedDate.getMonth());
@@ -40,6 +41,21 @@ const Calendar = ({ selectedDate, onDateSelect, entries }) => {
     setIsMonthSelectorOpen(false);
   };
 
+  const getEmotionIcon = (emotion) => {
+    switch (emotion) {
+      case 'happy':
+        return <HappyCat />;
+      case 'sad':
+        return <SadCat />;
+      case 'angry':
+        return <AngryCat />;
+      case 'neutral':
+        return <NeutralCat />;
+      default:
+        return null;
+    }
+  };
+
   const getDayClass = (day) => {
     const date = new Date(currentYear, currentMonth, day);
     const dateStr = formatDate(date);
@@ -70,13 +86,25 @@ const Calendar = ({ selectedDate, onDateSelect, entries }) => {
     }
 
     for (let day = 1; day <= daysInMonth; day++) {
+      const date = new Date(currentYear, currentMonth, day);
+      const dateStr = formatDate(date);
+      const emotion = entries[dateStr]?.emotion;
+      const isSelected =
+        selectedDate.getDate() === day &&
+        selectedDate.getMonth() === currentMonth &&
+        selectedDate.getFullYear() === currentYear;
+
       days.push(
         <div
           key={day}
-          className={getDayClass(day)}
+          className={`calendar-day cute ${isSelected ? 'selected' : ''}`}
           onClick={() => handleDayClick(day)}
         >
-          {day}
+          {emotion ? (
+            <span className="emotion-icon">{getEmotionIcon(emotion)}</span>
+          ) : (
+            <span className="day-number">{day}</span>
+          )}
         </div>
       );
     }
@@ -110,21 +138,29 @@ const Calendar = ({ selectedDate, onDateSelect, entries }) => {
         <div>토</div>
       </div>
       <div className="calendar-days">{renderCalendarDays()}</div>
-      <div className="emotion-legend">
+      <div className="emotion-legend cute-legend">
         <div className="legend-item">
-          <span className="legend-color emotion-happy"></span>
+          <span className="legend-icon">
+            <HappyCat />
+          </span>
           <span>행복해요</span>
         </div>
         <div className="legend-item">
-          <span className="legend-color emotion-sad"></span>
+          <span className="legend-icon">
+            <SadCat />
+          </span>
           <span>슬퍼요</span>
         </div>
         <div className="legend-item">
-          <span className="legend-color emotion-angry"></span>
+          <span className="legend-icon">
+            <AngryCat />
+          </span>
           <span>화났어요</span>
         </div>
         <div className="legend-item">
-          <span className="legend-color emotion-neutral"></span>
+          <span className="legend-icon">
+            <NeutralCat />
+          </span>
           <span>그럭저럭</span>
         </div>
       </div>
