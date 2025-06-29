@@ -30,7 +30,7 @@
   .dashboard {
     padding: var(--space-2);
   }
-  
+
   .dashboard h1 {
     font-size: var(--font-xl);
     margin-bottom: var(--space-4);
