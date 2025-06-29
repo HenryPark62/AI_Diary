@@ -104,7 +104,7 @@ const Analysis = () => {
       </div>
       <div className="analysis-chart-card">
         <div className="chart-title">기분 분포</div>
-        <ResponsiveContainer width="100%" height={180}>
+        <ResponsiveContainer width="100%" height={280}>
           <PieChart>
             <Pie
               data={initialData}

@@ -30,7 +30,9 @@ const MyPage = () => {
       <div className="mypage-title-block">
         <h2 className="mypage-title">든든한 계정 시스템</h2>
         <p className="mypage-desc">
-          내 계정에 기록을 저장하고\n언제든 로그인해 불러올 수 있어요
+          내 계정에 기록을 저장하고
+          <br />
+          언제든 로그인해 불러올 수 있어요
         </p>
       </div>
       <div className="mypage-card">
@@ -38,7 +40,7 @@ const MyPage = () => {
           <div className="mypage-profile-row">
             <div className="mypage-profile-icon">{profile.icon}</div>
             <div className="mypage-profile-info">
-              <div className="mypage-profile-name">{profile.name}</div>
+              <p className="mypage-profile-name">{profile.name}</p>
               <div className="mypage-profile-id">#{profile.id}</div>
             </div>
           </div>
@@ -47,15 +49,15 @@ const MyPage = () => {
           <div className="mypage-record-cards">
             <div className="mypage-record-card">
               <div className="mypage-record-icon">{profile.icon}</div>
-              <div className="mypage-record-label">내 기록</div>
-              <div className="mypage-record-value">{profile.recordCount}</div>
+              <p className="mypage-record-label">내 기록</p>
+              <p className="mypage-record-value">{profile.recordCount}</p>
             </div>
             <div className="mypage-record-card">
               <div className="mypage-record-icon">
                 <ImageIcon size={28} color="#6fcf6f" />
               </div>
-              <div className="mypage-record-label">올린 사진</div>
-              <div className="mypage-record-value">{profile.photoCount}</div>
+              <p className="mypage-record-label">올린 사진</p>
+              <p className="mypage-record-value">{profile.photoCount}</p>
             </div>
           </div>
         </div>

@@ -20,7 +20,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/dashboard/*" element={<Dashboard />} />
-              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </main>
         </div>

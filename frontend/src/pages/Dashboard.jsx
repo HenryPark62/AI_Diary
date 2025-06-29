@@ -15,22 +15,20 @@ import GuidedTour from '../components/GuidedTour';
 import Navigation from '../components/Navigation';
 import { formatDate } from '../utils/dateUtils';
 import '../styles/Dashboard.css';
-import MyPage from './MyPage';
-import Analysis from './Analysis';
-import ChatAI from './ChatAI';
+import MyPage from '../pages/MyPage.jsx';
+import Analysis from '../pages/Analysis.jsx';
+import ChatAI from '../pages/ChatAI.jsx';
 
-// 내부 페이지 컴포넌트 (임시)
-// const Analysis = () => <div style={{ padding: 32 }}>분석</div>;
-
+// 네비게이션 아이템 정의
 const navItems = [
-  { name: '대시보드', icon: <BookOpen size={24} />, path: '/dashboard' },
-  { name: '마이페이지', icon: <User size={24} />, path: '/dashboard/mypage' },
+  { name: '감정일기', icon: <BookOpen size={24} />, path: '/dashboard' },
   { name: '분석', icon: <BarChart2 size={24} />, path: '/dashboard/analysis' },
   {
     name: 'AI랑 대화',
     icon: <MessageCircle size={24} />,
     path: '/dashboard/chat',
   },
+  { name: '마이페이지', icon: <User size={24} />, path: '/dashboard/mypage' },
 ];
 
 const DashboardHome = () => {
@@ -87,17 +85,19 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="app-layout">
-      <Navigation active={active} onNav={handleNav} navItems={navItems} />
-      <main className="main-content">
-        <Routes>
-          <Route index element={<DashboardHome />} />
-          <Route path="mypage" element={<MyPage />} />
-          <Route path="analysis" element={<Analysis />} />
-          <Route path="chat" element={<ChatAI />} />
-        </Routes>
-      </main>
-    </div>
+    <>
+      <div className="app-layout">
+        <Navigation active={active} onNav={handleNav} navItems={navItems} />
+        <main className="main-content">
+          <Routes>
+            <Route index element={<DashboardHome />} />
+            <Route path="mypage" element={<MyPage />} />
+            <Route path="analysis" element={<Analysis />} />
+            <Route path="chat" element={<ChatAI />} />
+          </Routes>
+        </main>
+      </div>
+    </>
   );
 };
 
