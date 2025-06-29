@@ -1,12 +1,12 @@
 package backend.User.service;
 
+import backend.User.config.exception.BadRequestException;
 import backend.User.entity.EmailVerification;
 import backend.User.entity.TemporaryUser;
 import backend.User.entity.User;
 import backend.User.repository.EmailVerificationRepository;
 import backend.User.repository.TemporaryUserRepository;
 import backend.User.repository.UserRepository;
-import com.trip.planit.User.config.exception.BadRequestException;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.transaction.Transactional;
@@ -76,7 +76,7 @@ public class EmailService {
         TemporaryUser tempUser = findTemporaryUserOrThrow(email);
 
         EmailVerification verification = emailVerificationRepository
-                .findTopByTemporaryUserIdAndVerifiedEmailFalseOrderByCreateTimeDesc(tempUser)
+                .findTopByTemporaryUserIdAndIsEmailVerifiedFalseOrderByCreateTimeDesc(tempUser)
                 .orElseThrow(() -> new BadRequestException("인증 정보를 찾을 수 없습니다."));
 
         validateCodeNotExpired(verification.getExpirationTime());
