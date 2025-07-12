@@ -2,7 +2,7 @@ spring:
   jpa:
     show_sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -10,7 +10,7 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/aidiary
+    url: jdbc:postgresql://localhost:5432/aidiary # 여기서 aidiary로 통일해두었습니다. -to 성수
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
     hikari:
@@ -41,7 +41,7 @@ spring:
           google:
             client-id: ${GOOGLE_CLIENT_ID}
             client-secret: ${GOOGLE_CLIENT_SECRET}
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
             scope:
               - email
               - profile
@@ -54,3 +54,10 @@ spring:
 
 jwt:
   secret: ${JWT_SECRET}
+
+aws:
+  s3:
+    accessKey: ${AWS_ACCESS_KEY_ID}
+    secretKey: ${AWS_SECRET_ACCESS_KEY}
+    region: ${AWS_REGION}
+    bucketName: ${AWS_S3_BUCKET_NAME}

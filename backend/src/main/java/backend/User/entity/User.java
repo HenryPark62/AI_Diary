@@ -23,7 +23,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "user", indexes = {
+@Table(name = "users", indexes = {
         @Index(name = "idx_email", columnList = "email")
 })
 
@@ -39,11 +39,11 @@ public class User {
     @Column(name = "password", length = 255, nullable = false)
     private String password;
 
-    @Column(name = "nickname", length = 20, nullable = false, unique = true)
+    @Column(name = "nickname", length = 512, nullable = false, unique = true)
     private String nickname;
 
     //  선택사항
-    @Column(name = "profile")
+    @Column(name = "profile", columnDefinition = "TEXT")
     private String profile;
 
     @Enumerated(EnumType.STRING)
@@ -83,6 +83,6 @@ public class User {
     @Column(name = "deleteReason_Description")
     private String deleteReason_Description;
 
-    @Column(name = "fcm_token")
+    @Column(name = "fcm_token", columnDefinition = "TEXT")
     private String fcmToken;
 }
