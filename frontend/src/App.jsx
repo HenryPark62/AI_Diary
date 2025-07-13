@@ -8,6 +8,7 @@ import { AuthProvider } from './context/AuthContext';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
+import Auth from './pages/Auth.jsx';
 import './styles/App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/auth" element={<Auth />} />
               <Route path="/dashboard/*" element={<Dashboard />} />
             </Routes>
           </main>
