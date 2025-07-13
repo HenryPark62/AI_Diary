@@ -1,119 +1,175 @@
-.diary-entry {
-  background-color: white;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  padding: var(--space-6);
-  animation: slideUp 0.5s ease-out;
+/* 전체 다이어리 카드 */
+.cute-diary {
+  background: #fafaf3;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px 0 rgba(180, 200, 180, 0.08);
+  padding: 32px 20px 24px 20px;
+  max-width: 480px;
+  margin: 32px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.diary-entry h2 {
-  color: var(--neutral-800);
-  font-size: var(--font-xl);
-  margin-bottom: var(--space-6);
-  text-align: center;
+.cute-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #6fcf6f;
+  background: #f3fff3;
+  border-radius: 16px;
+  padding: 6px 18px;
+  margin-bottom: 18px;
+  letter-spacing: -1px;
 }
 
-.emotion-selector {
-  margin-bottom: var(--space-6);
+.cute-label {
+  font-size: 1.1rem;
+  color: #7a7a7a;
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
-.emotion-selector h3 {
-  margin-bottom: var(--space-3);
-  font-size: var(--font-lg);
-  color: var(--neutral-700);
+.cute-emotion-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 18px;
 }
 
-.emotion-buttons {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-2);
-}
-
-.emotion-btn {
-  padding: var(--space-3);
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--radius-md);
-  background-color: white;
+.cute-emotion-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: #f7faf7;
+  border: none;
+  border-radius: 16px;
+  padding: 10px 8px 6px 8px;
+  font-size: 1rem;
+  color: #7a7a7a;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: var(--font-md);
+  box-shadow: 0 2px 8px 0 rgba(180, 200, 180, 0.04);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  min-width: 70px;
+  min-height: 70px;
 }
-
-.emotion-btn:hover {
-  background-color: var(--neutral-100);
+.cute-emotion-btn .icon-wrap {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
 }
-
-.emotion-btn.selected {
-  border-color: var(--primary-color);
-  background-color: var(--primary-light);
+.cute-emotion-btn.selected {
+  background: #e0f7fa;
+  color: #222;
+  font-weight: 700;
+  box-shadow: 0 4px 16px 0 rgba(111, 207, 111, 0.1);
+}
+.cute-emotion-btn:active {
+  background: #ffe066;
+  color: #222;
 }
 
 .entry-content {
-  margin-bottom: var(--space-6);
-}
-
-.entry-content h3 {
-  margin-bottom: var(--space-3);
-  font-size: var(--font-lg);
-  color: var(--neutral-700);
-}
-
-.entry-content textarea {
   width: 100%;
-  padding: var(--space-3);
-  border: 1px solid var(--neutral-300);
-  border-radius: var(--radius-md);
-  resize: vertical;
-  font-size: var(--font-md);
-  line-height: 1.6;
-  transition: border-color 0.2s;
+  margin-bottom: 18px;
 }
-
-.entry-content textarea:focus {
+.cute-textarea {
+  width: 100%;
+  border-radius: 16px;
+  border: none;
+  background: #f3f3f3;
+  padding: 16px;
+  font-size: 1.1rem;
+  color: #444;
+  min-height: 120px;
+  box-shadow: 0 2px 8px 0 rgba(180, 200, 180, 0.04);
+  resize: vertical;
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(91, 138, 240, 0.1);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.cute-textarea:focus {
+  background: #e0f7fa;
+  box-shadow: 0 4px 16px 0 rgba(111, 207, 111, 0.1);
 }
 
 .entry-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: 12px;
+  margin-top: 8px;
 }
-
-.save-btn {
-  background-color: var(--primary-color);
-  color: white;
+.cute-save-btn {
+  background: #6fcf6f;
+  color: #fff;
   border: none;
-  border-radius: var(--radius-md);
-  padding: var(--space-3) var(--space-6);
-  font-weight: 500;
+  border-radius: 16px;
+  padding: 10px 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(111, 207, 111, 0.1);
+  transition: background 0.2s, box-shadow 0.2s;
 }
-
-.save-btn:hover {
-  background-color: #476dd9;
-  transform: translateY(-2px);
+.cute-save-btn:hover,
+.cute-save-btn:active {
+  background: #4ecb71;
+  box-shadow: 0 4px 16px 0 rgba(111, 207, 111, 0.18);
 }
-
-.save-btn:active {
-  transform: translateY(0);
+.cute-save-message {
+  color: #6fcf6f;
+  font-size: 1.05rem;
+  font-weight: 600;
+  background: #f3fff3;
+  border-radius: 12px;
+  padding: 6px 14px;
+  margin-left: 6px;
+  display: inline-block;
+  box-shadow: 0 2px 8px 0 rgba(180, 200, 180, 0.04);
+  animation: popIn 0.3s;
 }
-
-.save-message {
-  color: #16a34a;
-  font-size: var(--font-sm);
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .diary-entry {
-    padding: var(--space-4);
+@keyframes popIn {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
   }
-  
-  .emotion-buttons {
-    grid-template-columns: 1fr;
+  80% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 500px) {
+  .cute-diary {
+    padding: 12px 2px 12px 2px;
+    max-width: 100vw;
+  }
+  .cute-title {
+    font-size: 1.1rem;
+    padding: 4px 8px;
+  }
+  .cute-emotion-btn {
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 0.95rem;
+    padding: 6px 2px 4px 2px;
+  }
+  .cute-emotion-btn .icon-wrap {
+    width: 24px;
+    height: 24px;
+  }
+  .cute-textarea {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  .cute-save-btn {
+    font-size: 1rem;
+    padding: 8px 16px;
   }
 }
