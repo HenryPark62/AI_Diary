@@ -30,7 +30,8 @@ const MyPage = () => {
       <div className="mypage-title-block">
         <h2 className="mypage-title">든든한 계정 시스템</h2>
         <p className="mypage-desc">
-          내 계정에 기록을 저장하고\n언제든 로그인해 불러올 수 있어요
+          내 계정에 기록을 저장하고 <br />
+          언제든 로그인해 불러올 수 있어요
         </p>
       </div>
       <div className="mypage-card">

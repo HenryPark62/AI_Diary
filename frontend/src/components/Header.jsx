@@ -8,8 +8,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    login({ id: '1', username: 'demo_user' });
-    navigate('/dashboard');
+    navigate('/auth');
   };
 
   const handleLogout = () => {

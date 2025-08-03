@@ -78,7 +78,10 @@ const Dashboard = () => {
   const [active, setActive] = useState(location.pathname);
 
   // 로그인 안 했으면 홈으로
+
+  /* - 로그인 로직 완성시 주석 해제 필요
   if (!user) return <Navigate to="/" replace />;
+  */
 
   // 네비게이션 클릭 시 이동
   const handleNav = (path) => {

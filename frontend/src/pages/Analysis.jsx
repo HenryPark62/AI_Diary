@@ -85,10 +85,20 @@ const CheckResult = ({ score, type, onReset }) => {
 const Analysis = () => {
   const [depressionScore, setDepressionScore] = useState(null);
   const [anxietyScore, setAnxietyScore] = useState(null);
+
+  // 현재 날짜를 "YYYY년 MM월 DD일" 형식으로 반환하는 동적인 함수
+  const getCurrentDate = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    return `${year}년 ${month}월 ${day}일`;
+  };
+
   return (
     <div className="analysis-bg">
       <div className="analysis-title-block">
-        <h2 className="analysis-title">2025년 6월</h2>
+        <h2 className="analysis-title">{getCurrentDate()}</h2>
       </div>
       <div className="analysis-cards">
         <div className="analysis-report-card">
@@ -104,7 +114,7 @@ const Analysis = () => {
       </div>
       <div className="analysis-chart-card">
         <div className="chart-title">기분 분포</div>
-        <ResponsiveContainer width="100%" height={180}>
+        <ResponsiveContainer width="100%" height={240}>
           <PieChart>
             <Pie
               data={initialData}
