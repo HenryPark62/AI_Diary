@@ -22,8 +22,6 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/dashboard/*" element={<Dashboard />} />
-              <Route path="/dashboard/*" element={<Dashboard />} />
-              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </main>
         </div>

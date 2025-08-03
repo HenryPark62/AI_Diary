@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-import React from 'react';
-
->>>>>>> origin/frontend_chan
 const Navigation = ({ active, onNav, navItems }) => {
   return (
     <>

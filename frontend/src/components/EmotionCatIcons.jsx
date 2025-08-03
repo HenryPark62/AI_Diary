@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-import React from 'react';
-
->>>>>>> origin/frontend_chan
 export const HappyCat = () => (
   <svg
     width="40"

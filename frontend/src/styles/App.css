@@ -8,10 +8,7 @@
 
 html,
 body {
-<<<<<<< HEAD
   color: black;
-=======
->>>>>>> origin/frontend_chan
   margin: 0 auto;
   width: 100vw;
   min-height: 100dvh;
@@ -157,11 +154,8 @@ main {
 }
 
 .app-bg {
-<<<<<<< HEAD
   background: transparent;
 
-=======
->>>>>>> origin/frontend_chan
   background-image: url('/public/back.jpg');
   background-position: center;
   background-size: cover;
@@ -172,27 +166,16 @@ main {
 }
 
 .app-layout {
-<<<<<<< HEAD
   background: transparent;
 
   display: flex;
   min-height: 100vh;
-=======
-  display: flex;
-  min-height: 100vh;
-  background: transparent;
->>>>>>> origin/frontend_chan
 }
 
 /* PC: 왼쪽 고정 네비게이션 */
 .side-nav {
-<<<<<<< HEAD
   width: 94px;
   background: rgba(247, 250, 247, 0.7);
-=======
-  width: 92px;
-  background: #f7faf7;
->>>>>>> origin/frontend_chan
   border-right: none;
   display: flex;
   flex-direction: column;
@@ -203,35 +186,20 @@ main {
   left: 0;
   height: 92vh;
   z-index: 100;
-<<<<<<< HEAD
   border-radius: 28px;
   margin: 2vh 0 2vh 2vw;
-=======
-  box-shadow: 0 4px 32px 0 rgba(180, 200, 180, 0.1);
-  border-radius: 28px;
-  margin: 2vh 0 2vh 2vw;
-  transition: box-shadow 0.2s;
->>>>>>> origin/frontend_chan
 }
 .nav-logo {
   font-size: 2.2rem;
   margin-bottom: 38px;
   user-select: none;
-<<<<<<< HEAD
   background: #ffffff;
-=======
-  background: #e0f7fa;
->>>>>>> origin/frontend_chan
   border-radius: 50%;
   width: 54px;
   height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
-<<<<<<< HEAD
-=======
-  box-shadow: 0 2px 8px 0 rgba(111, 207, 111, 0.1);
->>>>>>> origin/frontend_chan
 }
 .side-nav ul {
   list-style: none;
@@ -250,27 +218,15 @@ main {
   align-items: center;
   justify-content: center;
   gap: 7px;
-<<<<<<< HEAD
   width: 72px;
   height: 72px;
-=======
-  width: 68px;
-  height: 68px;
->>>>>>> origin/frontend_chan
   background: #fff;
   color: #7a7a7a;
   border: none;
   border-radius: 20px;
-<<<<<<< HEAD
   font-size: 1rem;
   font-weight: 500;
   box-shadow: 0 2px 8px 0 rgba(180, 200, 180, 0.06);
-=======
-  font-size: 1.01rem;
-  font-weight: 500;
-  box-shadow: 0 2px 8px 0 rgba(180, 200, 180, 0.06);
-  transition: background 0.18s, color 0.18s, box-shadow 0.18s, font-weight 0.18s;
->>>>>>> origin/frontend_chan
   cursor: pointer;
   outline: none;
   position: relative;
@@ -283,12 +239,8 @@ main {
   box-shadow: 0 4px 16px 0 rgba(111, 207, 111, 0.13);
 }
 .side-nav button span {
-<<<<<<< HEAD
   font-weight: 500;
   font-size: 0.9rem;
-=======
-  font-size: 0.97rem;
->>>>>>> origin/frontend_chan
   margin-top: 1px;
 }
 
@@ -297,11 +249,7 @@ main {
   flex: 1;
   margin-left: 120px;
   min-height: 100vh;
-<<<<<<< HEAD
   background: var(--neutral-100);
-=======
-  background: transparent;
->>>>>>> origin/frontend_chan
   padding: 0;
   display: flex;
   flex-direction: column;

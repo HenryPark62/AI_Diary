@@ -37,26 +37,18 @@ const ChatAI = () => {
       setError('');
       const systemPrompt = {
         role: 'system',
-<<<<<<< HEAD
         content:
           '너는 친절하고 공감하는 AI 친구야. 사용자의 감정과 태그도 함께 참고해서 대답해줘.',
-=======
-        content: '너는 친절하고 공감하는 AI 친구야. 사용자의 감정과 태그도 함께 참고해서 대답해줘.',
->>>>>>> origin/frontend_chan
       };
       const chatMessages = [
         systemPrompt,
         ...userMessages.map((msg) => ({
           role: msg.sender === 'user' ? 'user' : 'assistant',
-<<<<<<< HEAD
           content:
             msg.text +
             (msg.tags && msg.tags.length > 0
               ? `\n[태그: ${msg.tags.join(', ')}]`
               : ''),
-=======
-          content: msg.text + (msg.tags && msg.tags.length > 0 ? `\n[태그: ${msg.tags.join(', ')}]` : ''),
->>>>>>> origin/frontend_chan
         })),
       ];
       const res = await fetch('http://localhost:5000/api/chat', {
@@ -175,13 +167,9 @@ const ChatAI = () => {
                 <div className="chat-avatar">
                   <Smile size={32} color="#fff" />
                 </div>
-<<<<<<< HEAD
                 <div className="chat-bubble ai">
                   AI가 답변을 작성 중입니다...
                 </div>
-=======
-                <div className="chat-bubble ai">AI가 답변을 작성 중입니다...</div>
->>>>>>> origin/frontend_chan
               </div>
             </div>
           )}
@@ -239,15 +227,11 @@ const ChatAI = () => {
               disabled={loading}
               rows={1}
             />
-<<<<<<< HEAD
             <button
               className="chat-send-btn"
               onClick={handleSend}
               disabled={loading}
             >
-=======
-            <button className="chat-send-btn" onClick={handleSend} disabled={loading}>
->>>>>>> origin/frontend_chan
               <Send size={22} />
             </button>
           </div>
