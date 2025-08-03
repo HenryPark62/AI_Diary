@@ -2,7 +2,11 @@
   background: #fafaf3;
   border-radius: 24px;
   padding: 32px 20px 24px 20px;
+<<<<<<< HEAD
   box-shadow: var(--shadow-main);
+=======
+  box-shadow: 0 4px 24px 0 rgba(180, 200, 180, 0.08);
+>>>>>>> origin/frontend_chan
   max-width: 420px;
   margin: 32px auto;
   user-select: none;
@@ -24,6 +28,10 @@
   border-radius: 16px;
   padding: 4px 16px;
   cursor: pointer;
+<<<<<<< HEAD
+=======
+  transition: background 0.2s;
+>>>>>>> origin/frontend_chan
 }
 .calendar-header h2.month-year-selector:hover {
   background: #e0f7fa;
@@ -39,6 +47,10 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+<<<<<<< HEAD
+=======
+  transition: background 0.2s;
+>>>>>>> origin/frontend_chan
 }
 .calendar-nav-btn:hover {
   background: #b2ebf2;
@@ -72,6 +84,10 @@
   font-size: 1.1rem;
   color: #7a7a7a;
   cursor: pointer;
+<<<<<<< HEAD
+=======
+  transition: background 0.2s, box-shadow 0.2s;
+>>>>>>> origin/frontend_chan
   box-shadow: 0 2px 8px 0 rgba(180, 200, 180, 0.04);
   position: relative;
 }

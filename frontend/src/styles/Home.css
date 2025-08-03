@@ -17,14 +17,22 @@
 
 .hero h1 {
   font-size: var(--font-4xl);
+<<<<<<< HEAD
   color: white;
+=======
+  color: black;
+>>>>>>> origin/frontend_chan
   margin-bottom: var(--space-4);
   line-height: 1.2;
 }
 
 .hero p {
   font-size: var(--font-xl);
+<<<<<<< HEAD
   color: white;
+=======
+  color: black;
+>>>>>>> origin/frontend_chan
   max-width: 600px;
   margin: 0 auto;
 }

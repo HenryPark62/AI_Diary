@@ -1,6 +1,10 @@
 /* 전체 페이지 */
+<<<<<<< HEAD
 body,
 html {
+=======
+body, html {
+>>>>>>> origin/frontend_chan
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -10,8 +14,12 @@ html {
 }
 
 /* 전체 래퍼 */
+<<<<<<< HEAD
 .main-content,
 .chat-ai-outer {
+=======
+.main-content, .chat-ai-outer {
+>>>>>>> origin/frontend_chan
   width: 100vw;
   min-height: 100vh;
   display: flex;
@@ -35,13 +43,21 @@ html {
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
   padding: 48px 0 32px 0; /* 좌우 0 */
   overflow: hidden;
+<<<<<<< HEAD
   background: transparent;
+=======
+  background: transparent; 
+>>>>>>> origin/frontend_chan
   z-index: 2;
 }
 
 /* 배경 색상 + 투명도 */
 .chat-container::before {
+<<<<<<< HEAD
   content: '';
+=======
+  content: "";
+>>>>>>> origin/frontend_chan
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -79,20 +95,32 @@ html {
   color: #1e1e1e;
   letter-spacing: 2px;
   font-weight: bold;
+<<<<<<< HEAD
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+=======
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+>>>>>>> origin/frontend_chan
 }
 
 /* 채팅창 */
 .chat-window {
   flex: 1 1 0;
   min-height: 0;
+<<<<<<< HEAD
   background: rgba(255, 255, 255, 0.88);
+=======
+  background: rgba(255,255,255,0.88);
+>>>>>>> origin/frontend_chan
   border-radius: 24px;
   margin: 0 auto 18px auto;
   padding-top: 28px;
   padding-bottom: 18px;
   overflow-y: auto;
+<<<<<<< HEAD
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+=======
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+>>>>>>> origin/frontend_chan
   display: flex;
   flex-direction: column;
 }
@@ -113,12 +141,17 @@ html {
   align-items: flex-end;
   margin-bottom: 14px;
 }
+<<<<<<< HEAD
 .chat-row.ai {
   flex-direction: row;
 }
 .chat-row.user {
   flex-direction: row-reverse;
 }
+=======
+.chat-row.ai { flex-direction: row; }
+.chat-row.user { flex-direction: row-reverse; }
+>>>>>>> origin/frontend_chan
 
 /* 아바타 */
 .chat-avatar {
@@ -148,7 +181,11 @@ html {
   line-height: 1.7;
   word-break: break-all;
   margin-bottom: 4px;
+<<<<<<< HEAD
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+=======
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+>>>>>>> origin/frontend_chan
   position: relative;
 }
 .chat-bubble.ai {
@@ -163,9 +200,13 @@ html {
 }
 
 /* 태그 */
+<<<<<<< HEAD
 .chat-tags {
   margin-top: 8px;
 }
+=======
+.chat-tags { margin-top: 8px; }
+>>>>>>> origin/frontend_chan
 .chat-tag {
   display: inline-flex;
   align-items: center;
