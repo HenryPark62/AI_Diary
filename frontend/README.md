@@ -26,5 +26,17 @@ https://github.com/jhammann/sakura
 
 - FE developer
 
+3. lucide-react 터미널 설치
+
+```bash
+npm install lucide-react
+```
+
+4. react-router 터미널 설치
+
+```bash
+npm install react-router-dom
+```
+
 > 우희찬
 > 김성수

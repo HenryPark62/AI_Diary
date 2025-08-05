@@ -1,0 +1,179 @@
+.mypage-bg {
+  min-height: 100vh;
+  padding: 32px 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+}
+
+.mypage-title-block {
+  margin-bottom: 24px;
+  text-align: center;
+  background-color: white;
+  padding: 8px 16px;
+  border-radius: 12px;
+  width: 80%;
+}
+
+.mypage-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.mypage-desc {
+  font-size: 1.08rem;
+  color: #888;
+  white-space: pre-line;
+}
+
+.mypage-card {
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: var(--shadow-main);
+  padding: 28px 20px 18px 20px;
+  height: 60vh;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mypage-section {
+  margin-bottom: 0;
+}
+
+.mypage-profile-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 2px;
+}
+
+.mypage-profile-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e0f7fa;
+  border-radius: 50%;
+}
+
+.mypage-profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mypage-profile-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.mypage-profile-id {
+  font-size: 0.98rem;
+  color: #b0b0b0;
+}
+
+.mypage-record-cards {
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+}
+
+.mypage-record-card {
+  background: #f7faf7;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px 0 rgba(180, 200, 180, 0.06);
+  padding: 12px 18px 10px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+  flex: 1;
+}
+
+.mypage-record-icon {
+  margin-bottom: 2px;
+}
+
+.mypage-record-label {
+  font-size: 0.98rem;
+  color: #7a7a7a;
+  margin-bottom: 2px;
+}
+
+.mypage-record-value {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #4ecb71;
+}
+
+.mypage-menu-list {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.mypage-menu-item {
+  background: #f7faf7;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px 0 rgba(180, 200, 180, 0.06);
+  padding: 10px 18px 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.01rem;
+  color: #4ecb71;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mypage-menu-item:hover {
+  background: #e0f7fa;
+}
+
+.mypage-premium-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f7faf7;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px 0 rgba(180, 200, 180, 0.06);
+  padding: 10px 18px 8px 12px;
+  font-size: 1.01rem;
+  color: #4ecb71;
+  font-weight: 600;
+}
+
+.mypage-premium-badge {
+  background: #e0f7fa;
+  color: #4ecb71;
+  border-radius: 10px;
+  padding: 2px 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+@media (max-width: 600px) {
+  .mypage-card {
+    max-width: 98vw;
+    padding: 16px 2vw 10px 2vw;
+  }
+  .mypage-title {
+    font-size: 1.15rem;
+  }
+  .mypage-profile-row {
+    gap: 10px;
+  }
+  .mypage-record-cards {
+    gap: 6px;
+  }
+  .mypage-menu-list {
+    gap: 6px;
+  }
+}

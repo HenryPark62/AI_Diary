@@ -1,0 +1,89 @@
+.guided-tour-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.guided-tour-content {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  max-width: 400px;
+  width: 90%;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s ease-out;
+}
+
+.guided-tour-content p {
+  color: var(--neutral-800);
+  font-size: var(--font-md);
+  line-height: 1.6;
+  margin-bottom: var(--space-6);
+}
+
+.guided-tour-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.skip-btn, .next-btn {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.skip-btn {
+  background-color: var(--neutral-100);
+  color: var(--neutral-700);
+  border: none;
+}
+
+.skip-btn:hover {
+  background-color: var(--neutral-200);
+}
+
+.next-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.next-btn:hover {
+  background-color: #476dd9;
+}
+
+.tour-progress {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--neutral-200);
+  transition: background-color 0.2s ease;
+}
+
+.progress-dot.active {
+  background-color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+  .guided-tour-content {
+    padding: var(--space-4);
+  }
+}

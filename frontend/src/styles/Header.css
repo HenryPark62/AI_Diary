@@ -1,0 +1,52 @@
+.header {
+  background-color: transparent;
+  box-shadow: none;
+  padding: var(--space-4);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: #222;
+  font-size: var(--font-xl);
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo svg {
+  color: #222;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .header {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .logo span {
+    font-size: var(--font-lg);
+  }
+}

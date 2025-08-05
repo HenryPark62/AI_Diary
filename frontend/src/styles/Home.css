@@ -1,0 +1,136 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding: 0;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.hero {
+  text-align: center;
+  padding: var(--space-12) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.hero h1 {
+  font-size: var(--font-4xl);
+  color: black;
+  margin-bottom: var(--space-4);
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: var(--font-xl);
+  color: black;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-illustration {
+  margin-top: var(--space-8);
+  display: flex;
+  gap: var(--space-8);
+  justify-content: center;
+}
+
+.hero-illustration .icon {
+  color: var(--primary-color);
+  animation: pulse 3s infinite alternate;
+}
+
+.hero-illustration .icon:nth-child(2) {
+  color: var(--secondary-color);
+  animation-delay: 1s;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+  padding: 0 var(--space-4);
+}
+
+.feature-card {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-card h2 {
+  color: var(--neutral-800);
+  margin-bottom: var(--space-4);
+  font-size: var(--font-xl);
+}
+
+.feature-card p {
+  color: var(--neutral-600);
+}
+
+.cta {
+  text-align: center;
+  padding: var(--space-12) var(--space-4);
+  background-color: var(--primary-light);
+  border-radius: var(--radius-lg);
+  margin: 0 var(--space-4);
+}
+
+.cta h2 {
+  font-size: var(--font-2xl);
+  color: var(--neutral-800);
+  margin-bottom: var(--space-4);
+}
+
+.cta p {
+  color: var(--neutral-600);
+  font-size: var(--font-lg);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .home {
+    gap: var(--space-8);
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+  }
+
+  .hero {
+    padding: var(--space-6) var(--space-2);
+  }
+
+  .hero h1 {
+    font-size: var(--font-3xl);
+  }
+
+  .hero p {
+    font-size: var(--font-lg);
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .cta {
+    padding: var(--space-8) var(--space-4);
+  }
+}
