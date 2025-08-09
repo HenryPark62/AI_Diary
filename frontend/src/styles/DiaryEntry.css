@@ -1,18 +1,18 @@
 /* DiaryEntry.css */
 
-/* [수정] 다이어리 카드가 할당된 공간을 꽉 채우도록 설정 */
+
 .cute-diary {
   background: #fafaf3;
   border-radius: 24px;
   box-shadow: 0 4px 24px 0 rgba(180, 200, 180, 0.08);
   padding: 32px 20px 24px 20px;
-  margin: 0; /* 좌우 중앙정렬을 위한 auto 마진 제거 */
+  margin: 0; 
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
   width: 100%;
-  /* max-width 속성이 없어야 꽉 채울 수 있습니다. */
+ 
 }
 
 .cute-title {

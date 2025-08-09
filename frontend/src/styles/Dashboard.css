@@ -12,21 +12,17 @@
   font-size: var(--font-2xl);
 }
 
-/* [최종 수정 ✅] */
+
 .dashboard-content {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 좌우 1:1 비율 유지 */
+  grid-template-columns: 1fr 1fr; 
   gap: var(--space-6);
-  
-  /* 이 부분의 max-width와 margin 속성을 제거하여 화면을 꽉 채우도록 합니다. */
-  
 }
 
 /* Responsive styles */
 /* 화면 너비가 992px 이하일 때 (태블릿 등) */
 @media (max-width: 992px) {
   .dashboard-content {
-    /* 세로로 한 줄로 표시되도록 변경 */
     grid-template-columns: 1fr;
     gap: var(--space-8);
   }

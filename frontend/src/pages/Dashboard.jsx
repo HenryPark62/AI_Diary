@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-
 import { useAuth } from '../context/AuthContext';
 import { User, BarChart2, MessageCircle, BookOpen } from 'lucide-react';
 import Calendar from '../components/Calendar';
-import DiaryEntry from '../components/DiaryEntry'; // DiaryEntry의 경로는 실제 위치에 맞게 확인해주세요.
+import DiaryEntry from '../components/DiaryEntry';
 import GuidedTour from '../components/GuidedTour';
 import Navigation from '../components/Navigation';
 import { formatDate } from '../utils/dateUtils';
@@ -32,11 +32,10 @@ const DashboardHome = () => {
 
   const handleDateSelect = (date) => setSelectedDate(date);
   
-  // [수정] saveEntry 함수가 isSecurityEnhanced 파라미터를 받도록 변경
+
   const saveEntry = (date, emotion, content, isSecurityEnhanced) => {
     const dateKey = formatDate(date);
     setEntries((prevEntries) => {
-      // [수정] 저장할 객체에 isSecurityEnhanced 정보도 포함
       const updated = { ...prevEntries, [dateKey]: { emotion, content, isSecurityEnhanced } };
       localStorage.setItem('diaryEntries', JSON.stringify(updated));
       console.log('저장된 데이터:', updated[dateKey]);
@@ -65,7 +64,6 @@ const DashboardHome = () => {
   );
 };
 
-// Dashboard 컴포넌트는 수정할 필요 없이 기존과 동일합니다.
 const Dashboard = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
