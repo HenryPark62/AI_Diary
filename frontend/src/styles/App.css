@@ -1,4 +1,4 @@
-/* Base styles and CSS reset */
+/* App.css */
 * {
   margin: 0;
   padding: 0;
@@ -47,16 +47,16 @@ body {
   --font-4xl: 2.25rem;
 
   /* Spacing (8px system) */
-  --space-1: 0.25rem; /* 4px */
-  --space-2: 0.5rem; /* 8px */
-  --space-3: 0.75rem; /* 12px */
+  --space-1: 0.25rem; 
+  --space-2: 0.5rem; 
+  --space-3: 0.75rem; 
   --space-4: 1rem; /* 16px */
-  --space-5: 1.25rem; /* 20px */
-  --space-6: 1.5rem; /* 24px */
-  --space-8: 2rem; /* 32px */
-  --space-10: 2.5rem; /* 40px */
-  --space-12: 3rem; /* 48px */
-  --space-16: 4rem; /* 64px */
+  --space-5: 1.25rem; 
+  --space-6: 1.5rem; 
+  --space-8: 2rem; 
+  --space-10: 2.5rem; 
+  --space-12: 3rem; 
+  --space-16: 4rem; 
 
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -88,9 +88,6 @@ body {
 main {
   flex: 1;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--space-4);
 }
 
 /* Button styles */
@@ -129,9 +126,7 @@ main {
 
 /* Responsive utilities */
 @media (max-width: 768px) {
-  main {
-    padding: var(--space-4) var(--space-2);
-  }
+  
 }
 
 /* Animations */
@@ -177,6 +172,7 @@ main {
   display: flex;
   min-height: 100vh;
   background: transparent;
+  width: 100%;
 }
 
 /* PC: 왼쪽 고정 네비게이션 */
@@ -254,15 +250,12 @@ main {
   margin-top: 1px;
 }
 
-/* 메인 컨텐츠 */
 .main-content {
   flex: 1;
-  margin-left: 120px;
+  margin-left: calc(92px + 4vw); 
   min-height: 100vh;
   background: transparent;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+  padding: var(--space-8);
   transition: margin-left 0.2s;
 }
 
@@ -278,6 +271,7 @@ main {
   .main-content {
     margin-left: 0;
     margin-bottom: 80px;
+    padding: var(--space-4);
   }
   .bottom-nav {
     display: flex;

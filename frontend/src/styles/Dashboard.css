@@ -1,8 +1,11 @@
 /* Dashboard.css */
 
+
 .dashboard {
-  padding: var(--space-4);
-  animation: fadeIn 0.5s ease-out;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%; 
 }
 
 .dashboard h1 {
@@ -10,32 +13,22 @@
   margin-bottom: var(--space-6);
   color: var(--neutral-800);
   font-size: var(--font-2xl);
+  flex-shrink: 0; 
 }
 
 
 .dashboard-content {
   display: grid;
-  grid-template-columns: 1fr 1fr; 
+  grid-template-columns: 1fr 2fr; 
   gap: var(--space-6);
+  width: 100%;
+  flex-grow: 1; 
 }
 
-/* Responsive styles */
-/* 화면 너비가 992px 이하일 때 (태블릿 등) */
+/* 태블릿/모바일 반응형 */
 @media (max-width: 992px) {
   .dashboard-content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; 
     gap: var(--space-8);
-  }
-}
-
-/* 화면 너비가 768px 이하일 때 (모바일 등) */
-@media (max-width: 768px) {
-  .dashboard {
-    padding: var(--space-2);
-  }
-
-  .dashboard h1 {
-    font-size: var(--font-xl);
-    margin-bottom: var(--space-4);
   }
 }

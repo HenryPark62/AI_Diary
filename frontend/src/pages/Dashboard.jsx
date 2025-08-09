@@ -1,3 +1,5 @@
+// Dashboard.jsx
+
 import { useState } from 'react';
 import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -7,10 +9,10 @@ import DiaryEntry from '../components/DiaryEntry';
 import GuidedTour from '../components/GuidedTour';
 import Navigation from '../components/Navigation';
 import { formatDate } from '../utils/dateUtils';
-import '../styles/Dashboard.css';
 import MyPage from './MyPage';
 import Analysis from './Analysis';
 import ChatAI from './ChatAI';
+import '../styles/Dashboard.css';
 
 const navItems = [
   { name: '일기작성', icon: <BookOpen size={24} />, path: '/dashboard' },
@@ -31,12 +33,14 @@ const DashboardHome = () => {
   });
 
   const handleDateSelect = (date) => setSelectedDate(date);
-  
 
   const saveEntry = (date, emotion, content, isSecurityEnhanced) => {
     const dateKey = formatDate(date);
     setEntries((prevEntries) => {
-      const updated = { ...prevEntries, [dateKey]: { emotion, content, isSecurityEnhanced } };
+      const updated = {
+        ...prevEntries,
+        [dateKey]: { emotion, content, isSecurityEnhanced },
+      };
       localStorage.setItem('diaryEntries', JSON.stringify(updated));
       console.log('저장된 데이터:', updated[dateKey]);
       return updated;
@@ -45,7 +49,7 @@ const DashboardHome = () => {
 
   return (
     <div className="dashboard">
-      <h1>감정 일기</h1>
+
       <div className="dashboard-content">
         <Calendar
           selectedDate={selectedDate}
@@ -70,24 +74,25 @@ const Dashboard = () => {
   const location = useLocation();
   const [active, setActive] = useState(location.pathname);
 
-  if (!user) return <Navigate to="/" replace />;
-
   const handleNav = (path) => {
     setActive(path);
     navigate(path);
   };
+  
+  if (!user) return <Navigate to="/" replace />;
 
   return (
     <div className="app-layout">
       <Navigation active={active} onNav={handleNav} navItems={navItems} />
-      <main className="main-content">
+      
+      <div className="main-content">
         <Routes>
           <Route index element={<DashboardHome />} />
           <Route path="mypage" element={<MyPage />} />
           <Route path="analysis" element={<Analysis />} />
           <Route path="chat" element={<ChatAI />} />
         </Routes>
-      </main>
+      </div>
     </div>
   );
 };

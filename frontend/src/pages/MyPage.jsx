@@ -1,7 +1,6 @@
 import '../styles/MyPage.css';
 import {
   Smile,
-  BookOpen,
   Image as ImageIcon,
   Calendar,
   Crown,
@@ -9,7 +8,7 @@ import {
 } from 'lucide-react';
 
 const profile = {
-  name: '율무',
+  name: 'admin',
   id: '1234',
   icon: (
     <Smile
@@ -18,8 +17,8 @@ const profile = {
       style={{ background: '#e0f7fa', borderRadius: '50%', padding: 4 }}
     />
   ),
-  recordCount: 89,
-  photoCount: 121,
+  recordCount: 0,
+  photoCount: 0,
   premium: true,
   premiumType: '연간',
 };
@@ -27,12 +26,16 @@ const profile = {
 const MyPage = () => {
   return (
     <div className="mypage-bg">
+      {/* -- 주석 처리된 부분은 필요시 활성화 --
       <div className="mypage-title-block">
         <h2 className="mypage-title">든든한 계정 시스템</h2>
         <p className="mypage-desc">
-          내 계정에 기록을 저장하고\n언제든 로그인해 불러올 수 있어요
+          내 계정에 기록을 저장하고 <br />
+          언제든 로그인해 불러올 수 있어요
         </p>
       </div>
+      */}
+
       <div className="mypage-card">
         <div className="mypage-section">
           <div className="mypage-profile-row">
