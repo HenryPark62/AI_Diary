@@ -1,16 +1,9 @@
 import { useState } from 'react';
-import {
-  Outlet,
-  Routes,
-  Route,
-  useNavigate,
-  useLocation,
-  Navigate,
-} from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { User, BarChart2, MessageCircle, BookOpen } from 'lucide-react';
 import Calendar from '../components/Calendar';
-import DiaryEntry from '../components/DiaryEntry';
+import DiaryEntry from '../components/DiaryEntry'; // DiaryEntry의 경로는 실제 위치에 맞게 확인해주세요.
 import GuidedTour from '../components/GuidedTour';
 import Navigation from '../components/Navigation';
 import { formatDate } from '../utils/dateUtils';
@@ -19,11 +12,8 @@ import MyPage from './MyPage';
 import Analysis from './Analysis';
 import ChatAI from './ChatAI';
 
-// 내부 페이지 컴포넌트 (임시)
-// const Analysis = () => <div style={{ padding: 32 }}>분석</div>;
-
 const navItems = [
-  { name: '대시보드', icon: <BookOpen size={24} />, path: '/dashboard' },
+  { name: '일기작성', icon: <BookOpen size={24} />, path: '/dashboard' },
   { name: '마이페이지', icon: <User size={24} />, path: '/dashboard/mypage' },
   { name: '분석', icon: <BarChart2 size={24} />, path: '/dashboard/analysis' },
   {
@@ -41,11 +31,15 @@ const DashboardHome = () => {
   });
 
   const handleDateSelect = (date) => setSelectedDate(date);
-  const saveEntry = (date, emotion, content) => {
+  
+  // [수정] saveEntry 함수가 isSecurityEnhanced 파라미터를 받도록 변경
+  const saveEntry = (date, emotion, content, isSecurityEnhanced) => {
     const dateKey = formatDate(date);
     setEntries((prevEntries) => {
-      const updated = { ...prevEntries, [dateKey]: { emotion, content } };
+      // [수정] 저장할 객체에 isSecurityEnhanced 정보도 포함
+      const updated = { ...prevEntries, [dateKey]: { emotion, content, isSecurityEnhanced } };
       localStorage.setItem('diaryEntries', JSON.stringify(updated));
+      console.log('저장된 데이터:', updated[dateKey]);
       return updated;
     });
   };
@@ -71,16 +65,15 @@ const DashboardHome = () => {
   );
 };
 
+// Dashboard 컴포넌트는 수정할 필요 없이 기존과 동일합니다.
 const Dashboard = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [active, setActive] = useState(location.pathname);
 
-  // 로그인 안 했으면 홈으로
   if (!user) return <Navigate to="/" replace />;
 
-  // 네비게이션 클릭 시 이동
   const handleNav = (path) => {
     setActive(path);
     navigate(path);

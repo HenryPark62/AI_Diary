@@ -1,14 +1,18 @@
-/* 전체 다이어리 카드 */
+/* DiaryEntry.css */
+
+/* [수정] 다이어리 카드가 할당된 공간을 꽉 채우도록 설정 */
 .cute-diary {
   background: #fafaf3;
   border-radius: 24px;
   box-shadow: 0 4px 24px 0 rgba(180, 200, 180, 0.08);
   padding: 32px 20px 24px 20px;
-  max-width: 480px;
-  margin: 32px auto;
+  margin: 0; /* 좌우 중앙정렬을 위한 auto 마진 제거 */
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  width: 100%;
+  /* max-width 속성이 없어야 꽉 채울 수 있습니다. */
 }
 
 .cute-title {
@@ -27,6 +31,10 @@
   color: #7a7a7a;
   margin-bottom: 8px;
   font-weight: 600;
+}
+
+.emotion-selector {
+  width: 100%;
 }
 
 .cute-emotion-buttons {
@@ -74,10 +82,14 @@
 }
 
 .entry-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   width: 100%;
   margin-bottom: 18px;
 }
 .cute-textarea {
+  flex-grow: 1;
   width: 100%;
   border-radius: 16px;
   border: none;
@@ -97,11 +109,19 @@
 }
 
 .entry-actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.save-action-group {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 8px;
 }
+
 .cute-save-btn {
   background: #6fcf6f;
   color: #fff;
@@ -131,6 +151,31 @@
   box-shadow: 0 2px 8px 0 rgba(180, 200, 180, 0.04);
   animation: popIn 0.3s;
 }
+
+.cute-btn {
+  border-radius: 16px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  transition: all 0.2s ease-in-out;
+}
+
+.security-btn.cute-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f8f8f8;
+  color: #777;
+}
+
+.security-btn.cute-btn.active {
+  background-color: #e6f7ff;
+  border-color: #91d5ff;
+  color: #096dd9;
+}
+
 @keyframes popIn {
   0% {
     transform: scale(0.7);
