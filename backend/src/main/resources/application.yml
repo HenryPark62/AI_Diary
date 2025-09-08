@@ -1,0 +1,30 @@
+spring:
+  jpa:
+    show_sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/diary_backend
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 2
+
+  jwt:
+    secret: ${JWT_SECRET}
+
+aws:
+  s3:
+    accessKey: ${AWS_ACCESS_KEY_ID}
+    secretKey: ${AWS_SECRET_ACCESS_KEY}
+    region: ${AWS_REGION}
+    bucketName: ${AWS_S3_BUCKET_NAME}
+
+
