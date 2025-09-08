@@ -17,23 +17,6 @@ spring:
       maximum-pool-size: 5
       minimum-idle: 2
 
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: planit745@gmail.com
-    password: ${SPRING_MAIL_PASSWORD}
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-          ssl:
-            enable: false
-          connectiontimeout: 5000
-          timeout: 5000
-          writetimeout: 5000
-
   jwt:
     secret: ${JWT_SECRET}
 
@@ -43,3 +26,5 @@ aws:
     secretKey: ${AWS_SECRET_ACCESS_KEY}
     region: ${AWS_REGION}
     bucketName: ${AWS_S3_BUCKET_NAME}
+
+
