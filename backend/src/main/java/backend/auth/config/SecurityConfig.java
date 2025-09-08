@@ -3,6 +3,9 @@ package backend.auth.config;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 import backend.auth.security.JwtRequestFilter;
+import backend.auth.security.OAuth2LoginSuccessHandler;
+import backend.auth.service.CustomOAuth2UserService;
+import backend.auth.service.CustomOidcUserService;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +30,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig {
 
     private final JwtRequestFilter jwtRequestFilter;
+    private final CustomOAuth2UserService oAuth2UserService;
+    private final OAuth2LoginSuccessHandler successHandler;
+    private final CustomOidcUserService oidcUserService;
 
     //    @Bean
 //    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -83,8 +89,21 @@ public class SecurityConfig {
                 .cors(withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/h2-console/**").permitAll()
-                        .anyRequest().permitAll() // 🔓 모든 요청 허용
+                        .requestMatchers(
+                                "/h2-console/**",
+                                "/oauth2/**",
+                                "/login/oauth2/**",
+                                "/signup/**",
+                                "/api/auth/**"
+                        ).permitAll()
+                        .anyRequest().permitAll() // 모든 요청 허용
+                )
+                .oauth2Login(oauth -> oauth
+                        .userInfoEndpoint(u -> u
+                                .oidcUserService(oidcUserService)
+                                .userService(oAuth2UserService)
+                        )
+                        .successHandler(successHandler)
                 )
                 .exceptionHandling(config -> config
                         .authenticationEntryPoint(new Http403ForbiddenEntryPoint())

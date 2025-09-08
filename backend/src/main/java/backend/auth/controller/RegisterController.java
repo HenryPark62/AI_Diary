@@ -1,10 +1,9 @@
 package backend.auth.controller;
 
-import backend.auth.dto.ApiResponse;
-import backend.auth.dto.LoginRequest;
-import backend.auth.dto.LoginResponse;
-import backend.auth.dto.RegisterRequest;
+import backend.auth.dto.*;
+import backend.auth.entity.TemporaryUser;
 import backend.auth.entity.User;
+import backend.auth.service.TemporaryUserService;
 import backend.auth.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -17,13 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "[구현 완료] 회원가입 관련 API", description = "회원가입 관련 API")
 @CrossOrigin(origins = "*")
@@ -33,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RegisterController {
 
     private final UserService userService;
+    private final TemporaryUserService tempUserService;
 
     @Operation(summary = "회원가입", description = "이메일, 비밀번호, 닉네임으로 회원가입을 진행합니다.")
     @PostMapping("/signup")
@@ -187,4 +181,74 @@ public class RegisterController {
                     .body(ApiResponse.onFailure("INTERNAL_ERROR", "사용자 정보 조회 중 오류가 발생했습니다."));
         }
     }
+
+    @Operation(summary = "소셜 가입 시작(임시유저 조회)", description = "OAuth2 로그인 성공 후 state로 임시가입 정보를 조회합니다.")
+    @GetMapping("/social/start")
+    public ResponseEntity<ApiResponse<SocialStartRes>> socialStart(@RequestParam(required = false) String state,
+                                                                   @org.springframework.web.bind.annotation.CookieValue(name = "signupState", required = false) String stateCookie) {
+        try {
+            String effective = (state != null && !state.isBlank()) ? state : stateCookie;
+            if (effective == null || effective.isBlank()) {
+                return ResponseEntity.badRequest().body(ApiResponse.onFailure("STATE_MISSING", "state 값이 없습니다.(query/cookie)"));
+            }
+            TemporaryUser tu = tempUserService.getByStateOrThrow(effective);
+            SocialStartRes res = SocialStartRes.from(tu);
+            return ResponseEntity.ok(ApiResponse.onSuccess(res));
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(ApiResponse.onFailure("STATE_INVALID", e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(ApiResponse.onFailure("INTERNAL_ERROR", "임시정보 조회 중 오류가 발생했습니다."));
+        }
+    }
+
+    @Operation(summary = "소셜 가입 완료", description = "state와 추가정보(필요시 이메일/닉네임)를 제출하여 정식 회원을 생성합니다.")
+    @PostMapping("/social/continue")
+    public ResponseEntity<ApiResponse<LoginResponse>> socialComplete(
+            @Valid @RequestBody SocialContinueReq req,
+            HttpServletResponse response) {
+        try {
+            // 1) 임시유저 검증/조회
+            TemporaryUser tu = tempUserService.getByStateOrThrow(req.getState());
+
+            // 2) 이메일 확정 (구글이 비공개면 프론트에서 받아온 값을 사용)
+            String email = (tu.getEmail() != null && !tu.getEmail().isBlank()) ? tu.getEmail() : req.getEmail();
+            if (email == null || email.isBlank()) {
+                return ResponseEntity.badRequest().body(ApiResponse.onFailure("EMAIL_REQUIRED", "이메일이 필요합니다."));
+            }
+
+            // 3) 중복 방지
+            if (userService.existsByEmail(email)) {
+                // 이미 가입된 경우 → 로그인 처리로 전환
+                User existing = userService.getUserByEmail(email);
+                userService.setLoginCookie(response, existing.getEmail());
+                return ResponseEntity.ok(ApiResponse.onSuccess(userService.loginResponse(existing)));
+            }
+
+            // 4) 정식 유저 생성 (소셜 메타 포함)
+            User newUser = userService.registerUserOAuth(
+                    email,
+                    (req.getNickName() != null && !req.getNickName().isBlank()) ? req.getNickName()
+                            : (tu.getName() != null ? tu.getName() : "User"),
+                    tu.getProvider(),                // "google"
+                    tu.getProviderId()
+            );
+
+            // 5) 임시유저 제거 & 로그인 쿠키 설정
+            tempUserService.deleteByState(req.getState());
+            userService.setLoginCookie(response, newUser.getEmail());
+
+            // 6) 응답
+            return new ResponseEntity<>(ApiResponse.onSuccess(userService.loginResponse(newUser)), HttpStatus.CREATED);
+
+        } catch (IllegalStateException e) {
+            return new ResponseEntity<>(ApiResponse.onFailure("STATE_INVALID", e.getMessage()), HttpStatus.BAD_REQUEST);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(ApiResponse.onFailure("VALIDATION_ERROR", e.getMessage()), HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return new ResponseEntity<>(ApiResponse.onFailure("INTERNAL_ERROR", "소셜 가입 처리 중 오류가 발생했습니다."), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }

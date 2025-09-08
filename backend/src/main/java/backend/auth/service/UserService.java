@@ -1,13 +1,16 @@
 package backend.auth.service;
 
 import backend.auth.dto.LoginResponse;
+import backend.auth.entity.OAuthAccount;
 import backend.auth.entity.User;
+import backend.auth.repository.OAuthAccountRepository;
 import backend.auth.repository.UserRepository;
 import backend.auth.security.JwtService;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,6 +27,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final PasswordValidator passwordValidator;
+    private final OAuthAccountRepository oauthAccountRepository;
 
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email)
@@ -90,6 +94,33 @@ public class UserService {
 
         return userRepository.save(user);
     }
+
+    @Transactional
+    public User registerUserOAuth(String email, String nickName,
+                                  String provider, String providerUserId) {
+
+        var existingMap = oauthAccountRepository.findByProviderAndProviderUserId(provider, providerUserId);
+        if (existingMap.isPresent()) {
+            return existingMap.get().getUser(); // 이미 연결됨 → 바로 로그인
+        }
+
+        User user = userRepository.findByEmail(email).orElseGet(() -> {
+            User u = new User();
+            u.setEmail(email);
+            u.setNickName(nickName);
+            return userRepository.save(u);
+        });
+
+        OAuthAccount map = new OAuthAccount();
+        map.setUser(user);
+        map.setProvider(provider);
+        map.setProviderUserId(providerUserId);
+        map.setEmailAtLinkTime(email);
+        oauthAccountRepository.save(map);
+
+        return user;
+    }
+
 
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);

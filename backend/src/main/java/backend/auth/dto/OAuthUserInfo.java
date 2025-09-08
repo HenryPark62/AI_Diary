@@ -1,4 +1,4 @@
-package backend.User.dto;
+package backend.auth.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +14,6 @@ public class OAuthUserInfo {
     private String providerId;     // sub (google) 또는 id (kakao)
     private String email;
     private String nickname;
-    private String profileImage;
 
     public static OAuthUserInfo fromGoogle(Map<String, Object> attributes) {
         return OAuthUserInfo.builder()
@@ -22,7 +21,6 @@ public class OAuthUserInfo {
                 .providerId((String) attributes.get("sub"))
                 .email((String) attributes.get("email"))
                 .nickname((String) attributes.get("name")) // 또는 "given_name"
-                .profileImage((String) attributes.get("picture"))
                 .build();
     }
 

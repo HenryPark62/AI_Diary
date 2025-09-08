@@ -17,16 +17,6 @@ spring:
       maximum-pool-size: 5
       minimum-idle: 2
 
-  jwt:
-    secret: ${JWT_SECRET}
-
-aws:
-  s3:
-    accessKey: ${AWS_ACCESS_KEY_ID}
-    secretKey: ${AWS_SECRET_ACCESS_KEY}
-    region: ${AWS_REGION}
-    bucketName: ${AWS_S3_BUCKET_NAME}
-
   security:
     oauth2:
       client:
@@ -36,11 +26,20 @@ aws:
             client-secret: ${GOOGLE_CLIENT_SECRET}
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             scope:
-              - email
+              - openid
               - profile
+              - email
         provider:
           google:
-            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
-            token-uri: https://oauth2.googleapis.com/token
-            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
-            user-name-attribute: email
+            issuer-uri: https://accounts.google.com
+            # user-name-attribute 기본: "sub"
+
+jwt:
+  secret: ${JWT_SECRET}
+
+aws:
+  s3:
+    accessKey: ${AWS_ACCESS_KEY_ID}
+    secretKey: ${AWS_SECRET_ACCESS_KEY}
+    region: ${AWS_REGION}
+    bucketName: ${AWS_S3_BUCKET_NAME}
