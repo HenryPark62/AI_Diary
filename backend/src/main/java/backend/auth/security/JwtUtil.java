@@ -1,4 +1,4 @@
-package backend.User.security;
+package backend.auth.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -17,7 +17,7 @@ public class JwtUtil {
     @Value("${jwt.secret}")
     private String SECRET_KEY;
 
-    private static final long EXPIRATION_TIME = 86400000; // 1일
+    private static final long EXPIRATION_TIME = 1000 * 60 * 60 * 48; // 2일
 
     // 서명키 생성
     private Key getSigningKey() {
@@ -30,7 +30,6 @@ public class JwtUtil {
     public String generateToken(String email) {
         Date now = new Date();
         Date expiration = new Date(now.getTime() + EXPIRATION_TIME);
-        System.out.println("Generating token. Current Time: " + now + ", Expiration Time: " + expiration);
 
         return Jwts.builder()
                 .setSubject(email)

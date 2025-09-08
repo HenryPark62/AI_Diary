@@ -1,11 +1,9 @@
-package backend.User.security;
+package backend.auth.security;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-
 import java.util.Base64;
 
-// Jwt Secret 비밀 키 생성을 위한 코드
 public class GenerateSecretKey {
     public static void main(String[] args) {
         byte[] keyBytes = Keys.secretKeyFor(SignatureAlgorithm.HS512).getEncoded();
