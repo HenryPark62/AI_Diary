@@ -9,16 +9,16 @@ const GuidedTour = () => {
     {
       element: '.calendar',
       content:
-        'Select any date on the calendar to start writing your diary entry. Days will be color-coded based on your emotions.',
+        '달력에서 원하는 날짜를 선택하여 일기 쓰기를 시작하세요. 감정에 따라 날짜가 색상으로 구분됩니다.',
     },
     {
       element: '.emotion-selector',
-      content: 'Choose an emotion that best represents how you feel today.',
+      content: '오늘의 기분을 가장 잘 표현하는 감정을 선택하세요.',
     },
     {
       element: '.entry-content',
       content:
-        'Write about your day and feelings in detail. Your entries are private and saved automatically.',
+        '당신의 하루와 감정에 대해 자세히 작성하세요. 항목은 비공개이며 자동으로 저장됩니다.',
     },
   ];
 
