@@ -2,7 +2,7 @@ spring:
   jpa:
     show_sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -16,6 +16,11 @@ spring:
     hikari:
       maximum-pool-size: 5
       minimum-idle: 2
+
+  jackson:
+    default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
 
   jwt:
     secret: ${JWT_SECRET}
