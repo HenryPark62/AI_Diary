@@ -8,7 +8,7 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { User, BarChart2, MessageCircle, BookOpen } from 'lucide-react';
+import { User, BarChart2, MessageCircle, BookOpen, Globe } from 'lucide-react';
 import Calendar from '../components/Calendar';
 import DiaryEntry from '../components/DiaryEntry';
 import GuidedTour from '../components/GuidedTour';
@@ -18,6 +18,7 @@ import '../styles/Dashboard.css';
 import MyPage from './MyPage';
 import Analysis from './Analysis';
 import ChatAI from './ChatAI';
+import Community from './Community';
 
 // 내부 페이지 컴포넌트 (임시)
 // const Analysis = () => <div style={{ padding: 32 }}>분석</div>;
@@ -31,6 +32,7 @@ const navItems = [
     icon: <MessageCircle size={24} />,
     path: '/dashboard/chat',
   },
+  { name: '커뮤니티', icon: <Globe size={24} />, path: '/dashboard/community' },
 ];
 
 const DashboardHome = () => {
@@ -98,6 +100,7 @@ const Dashboard = () => {
           <Route path="mypage" element={<MyPage />} />
           <Route path="analysis" element={<Analysis />} />
           <Route path="chat" element={<ChatAI />} />
+          <Route path="community" element={<Community />} />
         </Routes>
       </main>
     </div>
