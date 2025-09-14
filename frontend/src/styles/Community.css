@@ -1,0 +1,159 @@
+.community-container {
+  padding: 32px;
+  background-color: rgba(249, 249, 249, 0.8);
+  border-radius: 24px;
+}
+
+.community-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.write-diary-button {
+  background-color: #4ecb71;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.write-diary-button:hover {
+  background-color: #3aa85a;
+}
+
+.search-bar {
+  display: flex;
+}
+
+.search-bar input {
+  border: 1px solid #e0e0e0;
+  padding: 12px;
+  border-radius: 8px 0 0 8px;
+  font-size: 16px;
+  width: 250px;
+}
+
+.search-bar button {
+  background-color: #4ecb71;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+  background-color: #3aa85a;
+}
+
+.diary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.diary-card {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.diary-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.diary-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #666;
+}
+
+.diary-card hr {
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 0 0 16px 0;
+}
+
+.diary-card-body {
+  flex-grow: 1;
+}
+
+.diary-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+}
+
+.diary-content {
+  font-size: 16px;
+  line-height: 1.5;
+  height: 60px; /* Limit height and use ellipsis */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.diary-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #666;
+}
+
+.popular-badge {
+  background-color: #ffd700;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.pagination button {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  padding: 8px 16px;
+  margin: 0 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination button.active {
+  background-color: #4ecb71;
+  color: white;
+  border-color: #4ecb71;
+}

@@ -109,13 +109,12 @@ main {
 }
 
 .btn-login {
-  background-color: var(--primary-color);
+  background-color: #3aa85a;
   color: white;
 }
 
 .btn-login:hover {
-  background-color: #476dd9;
-  transform: translateY(-1px);
+  background-color: black;
 }
 
 .btn-logout {
